@@ -1,16 +1,14 @@
 import { ArticleDetailPage } from "@/components/articles/article-detail-page";
 import { prisma } from "@/lib/prisma";
-import React from "react";
+import { FC } from "react";
 
 type ArticleDetailPageProps = {
-  params: { id: string };  // ✅ सिंपल object होना चाहिए
+  params: { id: string }; // ✅ सही टाइपिंग
 };
 
-const page: React.FC<ArticleDetailPageProps> = async ({ params }) => {
-  const { id } = params; // ✅ अब params को await करने की जरूरत नहीं
-
+const Page: FC<ArticleDetailPageProps> = async ({ params }) => {
   const article = await prisma.articles.findUnique({
-    where: { id },
+    where: { id: params.id },
     include: {
       author: {
         select: {
@@ -22,9 +20,7 @@ const page: React.FC<ArticleDetailPageProps> = async ({ params }) => {
     },
   });
 
-  if (!article) {
-    return <h1>Article not found.</h1>;
-  }
+  if (!article) return <h1>Article not found.</h1>;
 
   return (
     <div>
@@ -33,4 +29,4 @@ const page: React.FC<ArticleDetailPageProps> = async ({ params }) => {
   );
 };
 
-export default page;
+export default Page;

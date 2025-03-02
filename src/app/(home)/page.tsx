@@ -9,7 +9,7 @@ const page = async () => {
   return (
     <main className="min-h-screen bg-gray-100 dark:bg-gray-900">
       <HeroSection />
-      <section className="relative py-16 md:py-24 bg-gray-50 dark:bg-gradient-to-b dark:from-indigo-950/50 dark:to-gray-900/95">
+      <section className="relative py-16 md:py-24  dark:border-white/10  dark:bg-gradient-to-t dark:from-gray-900/95 dark:to-indigo-950/95">
         <div className="container mx-auto px-4">
           <div className="mb-12 text-center">
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl animate-fade-in">

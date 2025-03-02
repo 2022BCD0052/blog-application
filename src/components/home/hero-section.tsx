@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-[600px] w-full overflow-hidden bg-gray-100 dark:bg-gradient-to-br dark:from-indigo-950 dark:via-purple-950 dark:to-indigo-950">
+    <section className="relative min-h-[600px] w-full overflow-hidden  dark:border-white/10 bg-gray-50 dark:bg-gradient-to-t dark:from-gray-900/95 dark:to-indigo-950/95">
       {/* Gradient overlay */}
       <div className="absolute inset-0 before:absolute before:left-1/4 before:top-0 before:h-[500px] before:w-[500px] before:rounded-full before:bg-gradient-to-r before:from-indigo-600/20 before:to-purple-600/20 dark:before:from-cyan-400/20 dark:before:to-pink-500/20 before:blur-3xl" />
 

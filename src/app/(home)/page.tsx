@@ -7,29 +7,35 @@ import React, { Suspense } from "react";
 
 const page = async () => {
   return (
-    <main>
+    <main className="min-h-screen bg-gray-100 dark:bg-gray-900">
       <HeroSection />
-      <section className="relative py-16 md:py-24">
+      <section className="relative py-16 md:py-24 bg-gray-50 dark:bg-gradient-to-b dark:from-indigo-950/50 dark:to-gray-900/95">
         <div className="container mx-auto px-4">
           <div className="mb-12 text-center">
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
+            <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl animate-fade-in">
               Featured Articles
             </h2>
-            <p className="mt-4 text-lg text-gray-600 dark:text-gray-300">
+            <p className="mt-4 text-lg text-gray-600 dark:text-gray-300 animate-fade-in-up">
               Discover our most popular and trending content
             </p>
           </div>
 
           {/* Top Articles */}
-          <Suspense fallback={<h1>Loading....</h1>}>
-            <TopArticles/>
+          <Suspense
+            fallback={
+              <h1 className="text-center text-gray-600 dark:text-gray-400">
+                Loading....
+              </h1>
+            }
+          >
+            <TopArticles />
           </Suspense>
 
           <div className="mt-12 text-center">
             <Link href={"/articles"}>
               <Button
                 variant="outline"
-                className="rounded-full px-8 py-6 text-lg hover:bg-gray-900 hover:text-white dark:hover:bg-white dark:hover:text-gray-900"
+                className="rounded-full px-8 py-6 text-lg border-indigo-400/50 text-indigo-600 hover:bg-indigo-600 hover:text-white dark:border-cyan-400/50 dark:text-cyan-400 dark:hover:bg-cyan-500 dark:hover:text-white transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg hover:shadow-indigo-500/20 dark:hover:shadow-cyan-500/20"
               >
                 View All Articles
               </Button>

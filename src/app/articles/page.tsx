@@ -1,5 +1,5 @@
 import {
-  AllArticlesPage, 
+  AllArticlesPage,
 } from "@/components/articles/all-articles-page";
 import ArticleSearchInput from "@/components/articles/article-search-input";
 import { Button } from "@/components/ui/button";
@@ -8,21 +8,29 @@ import { fetchArticleByQuery } from "@/lib/query/fetch-articles";
 import Link from "next/link";
 import AllArticlesPageSkeleton from "./all-articles-page-skeleton";
 
+// Define the shape of searchParams
+type SearchParams = {
+  search?: string;
+  page?: string;
+};
+
+// Update SearchPageProps to reflect that searchParams is a Promise
 type SearchPageProps = {
-  searchParams: { search?: string; page?: string };
+  searchParams: Promise<SearchParams>; // Use Promise for Server Components
 };
 
 const ITEMS_PER_PAGE = 3; // Number of items per page
 
 const page: React.FC<SearchPageProps> = async ({ searchParams }) => {
-  const searchText = searchParams.search || "";
-  const currentPage = Number(searchParams.page) || 1;
+  // Await the searchParams Promise to get the actual values
+  const resolvedSearchParams = await searchParams;
+  const searchText = resolvedSearchParams.search || "";
+  const currentPage = Number(resolvedSearchParams.page) || 1;
   const skip = (currentPage - 1) * ITEMS_PER_PAGE;
   const take = ITEMS_PER_PAGE;
 
   const { articles, total } = await fetchArticleByQuery(searchText, skip, take);
   const totalPages = Math.ceil(total / ITEMS_PER_PAGE);
- 
 
   return (
     <div className="min-h-screen bg-background">
@@ -37,11 +45,10 @@ const page: React.FC<SearchPageProps> = async ({ searchParams }) => {
             <ArticleSearchInput />
           </Suspense>
         </div>
-        {/* All article page  */}
-        <Suspense fallback={<AllArticlesPageSkeleton/>}>
-        <AllArticlesPage articles={articles} />
+        {/* All article page */}
+        <Suspense fallback={<AllArticlesPageSkeleton />}>
+          <AllArticlesPage articles={articles} />
         </Suspense>
-        {/* <AllArticlesPageSkeleton/> */}
         {/* Pagination */}
         <div className="mt-12 flex justify-center gap-2">
           {/* Prev Button */}
@@ -62,7 +69,7 @@ const page: React.FC<SearchPageProps> = async ({ searchParams }) => {
               passHref
             >
               <Button
-                variant={`${currentPage === index + 1 ? 'destructive' : 'ghost'}`}
+                variant={`${currentPage === index + 1 ? "destructive" : "ghost"}`}
                 size="sm"
                 disabled={currentPage === index + 1}
               >

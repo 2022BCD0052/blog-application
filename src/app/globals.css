@@ -13,4 +13,7 @@ body {
   }
 }
 
+neon-text {
+  text-shadow: 0px 0px 15px rgba(99, 102, 241, 0.8);
+}
 

@@ -21,7 +21,7 @@ export function Navbar() {
               <Link href="/" className="flex items-center space-x-2">
                 <span className="text-2xl font-extrabold tracking-tight">
                   <span className="bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent transition-all duration-300 hover:from-blue-700 hover:to-purple-700">
-                    Byte
+                    Yogesh
                   </span>
                   <span className="text-gray-900 dark:text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.3)] dark:drop-shadow-[0_0_8px_rgba(0,0,0,0.5)]">
                     Code

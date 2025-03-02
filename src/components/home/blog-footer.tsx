@@ -102,7 +102,7 @@ export function BlogFooter() {
         {/* Copyright */}
         <div className="mt-12 border-t border-gray-200 dark:border-white/10 pt-8 text-center">
           <p className="text-sm text-gray-600 dark:text-gray-400">
-            © {new Date().getFullYear()} ByteCode. All rights reserved.
+            © {new Date().getFullYear()} YogeshCode. All rights reserved.
           </p>
         </div>
       </div>

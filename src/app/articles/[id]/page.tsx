@@ -3,11 +3,11 @@ import { prisma } from "@/lib/prisma";
 import React from "react";
 
 type ArticleDetailPageProps = {
-  params: Awaited<{ id: string }>;  // Awaited<T> से Promise resolve होगा
+  params: { id: string };  // ✅ सिंपल object होना चाहिए
 };
 
 const page: React.FC<ArticleDetailPageProps> = async ({ params }) => {
-  const id = params.id; // अब params को await करने की जरूरत नहीं
+  const { id } = params; // ✅ अब params को await करने की जरूरत नहीं
 
   const article = await prisma.articles.findUnique({
     where: { id },

@@ -12,7 +12,7 @@ import {
 } from "../ui/table";
 import Link from "next/link";
 import type { Prisma } from "@prisma/client";
-// import { deleteArticle } from "@/actions/delete-article";
+import { deleteArticle } from "@/actions/delete-article";
  
 type RecentArticlesProps = {
   articles: Prisma.ArticlesGetPayload<{
